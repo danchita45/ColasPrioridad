@@ -6,6 +6,8 @@ package com.mycompany.colaprioridad;
 
 import EDD.Machote;
 import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Stack;
 
 /**
  *
@@ -21,8 +23,8 @@ public class Prioridad implements Machote {
     //el mayor va primero(C y P)IMPORTANTE y se manda a la 2 
     //lo que está en pila1, se va a pila 2, de ser mayor C
 
-    Auto Pila1[] = new Auto[5];
-    Auto Pila2[] = new Auto[5];
+    Stack Pila1;
+    Stack  Pila2;
     Auto ColaPrioridad[] = new Auto[5];
     int t;
     Auto obj =null;
@@ -46,21 +48,16 @@ public class Prioridad implements Machote {
     public boolean inserta(Object obj) {
        Auto a = (Auto)obj;
        
-       if(ColaPrioridad[t]==null && t==0){
+       if(vacio()){
+           t=t++;
            ColaPrioridad[t]=a;
            return true;
        }else{
-           for (int i = 0; i < ColaPrioridad.length; i++) {
-               if(ColaPrioridad[i].prioridad>a.prioridad){
-                   if(ColaPrioridad[i+1]==null){
-                       ColaPrioridad[i+1]=a;
-                       
-                       return true;
-                   }else{
-                       
-                   }
-               }
+           if(ColaPrioridad[t].prioridad<a.prioridad){
+               Pila1 = insertPila(Pila1, ColaPrioridad[t]);
+               t=t-1;
            }
+           
        }
        return false;
     }
@@ -71,6 +68,11 @@ public class Prioridad implements Machote {
     @Override
     public Object elimina() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public Stack insertPila(Stack pila,Auto obj){
+        pila.add(obj);
+        return pila;
     }
 
 }
