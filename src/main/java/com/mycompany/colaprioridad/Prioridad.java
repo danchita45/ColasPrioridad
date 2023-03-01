@@ -54,8 +54,21 @@ public class Prioridad implements Machote {
            return true;
        }else{
            if(ColaPrioridad[t].prioridad<a.prioridad){
-               Pila1 = insertPila(Pila1, ColaPrioridad[t]);
-               t=t-1;
+               if(Pila1.empty() ){
+                   if(!Pila2.empty()){
+                       Auto auto2 =(Auto) Pila2.pop();
+                       
+                       Auto auto1 =(Auto) Pila2.pop();
+                       if(auto2.prioridad>auto1.prioridad){
+                           insertPila(Pila1, auto2);
+                           insertPila(Pila1, auto1);
+                       }
+                       
+                       
+                   }
+               }else{
+                   
+               }
            }
            
        }
