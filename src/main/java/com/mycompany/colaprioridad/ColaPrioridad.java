@@ -10,9 +10,10 @@ import java.util.Scanner;
  * @author danchita45
  */
 public class ColaPrioridad {
-
+ public static ColasDinamicas Cola = new   ColasDinamicas();
     public static void main(String[] args) {
-
+        
+        menu();
     }
 
     public static void menu() {
@@ -25,19 +26,17 @@ public class ColaPrioridad {
 
         switch (var) {
             case "1":
-                Auto a = new Auto();
-                System.out.println("ingrese Marca");
-                a.Marca = teclado.nextLine();
-                System.out.println("Ingrese matricula");
-                a.Matricula = teclado.nextLine();
-                System.out.println("ingrese año");
-                a.Year = Integer.parseInt(teclado.nextLine());
-                System.out.println("Ingrese Prioridad");
-                a.prioridad = Integer.parseInt(teclado.nextLine());
-                Prioridad p = new Prioridad();
-                p.inserta(a);
-                System.out.println("Dato insertado");
+                
+                Elefante elefante = new Elefante();
+                System.out.println("ingrese etiqueta elefante");
+                elefante.etiqueta= teclado.nextLine();
+                Cola.inserta(elefante);
+                menu();
                 break;
+            case "3":
+                for(Elefante efelante : Cola.cd){
+                    System.out.println(efelante.etiqueta);
+                }
             default:
                 System.out.println("Opcion NO valida");
                 menu();

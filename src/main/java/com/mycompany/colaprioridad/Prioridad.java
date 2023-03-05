@@ -63,8 +63,6 @@ public class Prioridad implements Machote {
                            insertPila(Pila1, auto2);
                            insertPila(Pila1, auto1);
                        }
-                       
-                       
                    }
                }else{
                    
