@@ -19,7 +19,7 @@ public class ColasDinamicas<T> implements Machote {
 
     @Override
     public boolean vacio() {
-        return (f == -1 && a == -1);
+        return (f == -1);
     }
 
     @Override
@@ -31,14 +31,12 @@ public class ColasDinamicas<T> implements Machote {
     public boolean inserta(Object obj) {
 
         if (vacio()) {
-
             cd = new Elefante[1];
             cd[0] = (Elefante) obj;
             f++;
             a++;
             return true;
         } else {
-
             f++;
             Elefante[] cde = new Elefante[f + 1];
             cde[f] = (Elefante) obj;
@@ -49,16 +47,25 @@ public class ColasDinamicas<T> implements Machote {
             }
             cd = new Elefante[cde.length];
             System.arraycopy(cde, 0, cd, 0, cde.length);
-
             return true;
-
         }
 
     }
 
     @Override
     public Object elimina() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (!vacio()) {
+            Elefante elefante = cd[0];
+            Elefante[] olifante = new Elefante[cd.length - 1];
+            System.arraycopy(cd, a+1, olifante, 0, cd.length - 1);
+            cd = new Elefante[olifante.length];
+            System.arraycopy(olifante, 0, cd, 0, olifante.length);
+            f--;
+            return elefante;
+        } else {
+            Elefante fante= new Elefante();
+            System.out.println("Cola vacia!!!...");
+            return fante;
+        }
     }
-
 }
